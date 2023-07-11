@@ -4,7 +4,7 @@ const path = require('path');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./controllers');
-const sequalize = require('./config/connection');
+const sequelize = require('./config/connection');
 
 const hbs = exphbs.create({});
 
@@ -36,7 +36,7 @@ app.use(routes);
 
 // // sync sequelize models to the database, then turn on the server
 
-sequalize
+sequelize
   .sync()
   .then(() => {
     app.listen(PORT, () => {
