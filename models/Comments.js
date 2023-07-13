@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // New Sequelize model for Users
-class Posts extends Model {}
+class Comments extends Model {}
 
-Posts.init(
+Comments.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,6 +20,13 @@ Posts.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'posts',
+        key: 'id',
+      },
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -33,7 +40,7 @@ Posts.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'posts',
+    modelName: 'comments',
   }
 );
-module.exports = Posts;
+module.exports = Comments;

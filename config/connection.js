@@ -1,9 +1,9 @@
-const Sequalize = require('sequelize');
+const Sequelize = require('sequelize');
 require('dotenv').config();
 if (process.env.JAWSDB_URL) {
-  var sequalize = new Sequalize(process.env.JAWSDB_URL);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
-  sequalize = new Sequalize(
+  sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PW,
@@ -15,7 +15,7 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-module.exports = sequalize;
+module.exports = sequelize;
 
 // const Sequelize = require('sequelize');
 // require('dotenv').config();

@@ -11,4 +11,8 @@ Posts.hasOne(Users, {
   onDelete: 'CASCADE',
 });
 
+Posts.belongsTo(Users, {
+  foreignKey: 'user_id',
+});
+
 module.exports = { Users, Posts };
