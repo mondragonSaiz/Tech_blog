@@ -1,0 +1,11 @@
+<div class='conatiner' style="padding:3%">
+  
+  {{#unless posts}}
+ <h3 class="display-3">No posts yet.</h3>
+  {{else}}
+  <h1 class='display-1'>My Posts</h1>
+    {{#each posts as |post|}}
+    {{> dashboard-details}}
+    {{/each}}
+  {{/unless}}
+</div>
