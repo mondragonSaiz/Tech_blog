@@ -1,8 +1,38 @@
 [
   {
     "content": "Not true, I only listen to Jazz",
-    "date": "2/06/1998",
+    "date": "2/6/1998",
     "post_id": 1,
+    "user_id": 2
+  },
+  {
+    "content": "I do love inide rock!",
+    "date": "2/6/1998",
+    "post_id": 1,
+    "user_id": 2
+  },
+  {
+    "content": "I don't realy like doing front.",
+    "date": "2/8/1998",
+    "post_id": 2,
+    "user_id": 1
+  },
+  {
+    "content": "I do love making UI designs",
+    "date": "1/9/1998",
+    "post_id": 2,
+    "user_id": 3
+  },
+  {
+    "content": "It is!!",
+    "date": "2/6/1998",
+    "post_id": 3,
+    "user_id": 1
+  },
+  {
+    "content": "I just call my friend chatgpt and debugging becomes an easy task!",
+    "date": "2/10/1998",
+    "post_id": 3,
     "user_id": 2
   }
 ]

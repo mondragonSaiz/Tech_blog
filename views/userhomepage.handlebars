@@ -1,8 +1,9 @@
 <div class='container'>
 
   <h1 class="display-1" style="color: rgb(53, 54, 56); margin:3%">The Blog</h1>
+  {{!-- <p>{{userID}}</p> --}}
   {{#each posts as |post|}}
-     {{> post-details }}
+     {{> post-details userID=userID}}
 
     {{/each}}
 

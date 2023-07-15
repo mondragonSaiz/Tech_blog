@@ -1,7 +1,17 @@
 [
   {
     "content": "All programmers love indie rock",
-    "date": "30/05/1998",
+    "date": "30/5/1998",
     "user_id": 1
+  },
+  {
+    "content": "I love HTML",
+    "date": "28/7/1999",
+    "user_id": 2
+  },
+  {
+    "content": "Debugging is so tiring",
+    "date": "17/03/2000",
+    "user_id": 3
   }
 ]

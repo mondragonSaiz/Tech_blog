@@ -1,11 +1,71 @@
 <div class='conatiner' style="padding:3%">
+
+   <div
+    class='modal fade'
+    id='addPostModal'
+    tabindex='-1'
+    role='dialog'
+    aria-hidden='true'
+    style='margin-top: 5%; border-color: #ffff;'
+  >
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <div class='row' style='padding-top: 2%;'>
+            <h5
+              class='modal-title'
+              style='justify-content:center; text-align:center;  color:var(--dark-green-color);'
+            >
+              Create Post</h5>
+          
+          </div>
+        </div>
+        <div
+          class='modal-body justify-content-center align-items-center'
+          style='border-color: #FFFF;'
+        >
+          <form id='signUpForm'>
+            <div class='form-group'>
+              <input
+                type='text'
+                class='form-control form-signup'
+                id='postContentInput'
+                aria-describedby='emailHelp'
+                placeholder='What are you thinking?'
+                style='justify-content: center; text-align: left; align-items: center; margin-bottom: 2%;'
+              />
+              {{! <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                      else.</small> }}
+            </div>
+           
+            <div class='div-btn-submit' style="text-align: center;">
+              <button
+                type='submit'
+                class='btn btn-outline-dark'
+                id='addPostSubmit'
+              >Submit</button>
+            </div>
+
+          </form>
+        </div>
+        {{! <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> }}
+      </div>
+    </div>
+  </div>
   
   {{#unless posts}}
  <h3 class="display-3">No posts yet.</h3>
+ 
   {{else}}
   <h1 class='display-1'>My Posts</h1>
     {{#each posts as |post|}}
     {{> dashboard-details}}
     {{/each}}
   {{/unless}}
+  <button type='button' id='addPost' class='btn btn-outline-success' data-bs-toggle='modal'
+                  data-bs-target='#addPostModal'style=' margin-right:0; margin-top:2%;'>Add Post</button>
+  <script src='/js/dashboard.js'></script>
 </div>

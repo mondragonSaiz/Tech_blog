@@ -1,4 +1,4 @@
-<div class='card text-center' style='padding:2%'>
+<div class='card text-center' style='padding:2%; margin-top:2%'>
   <ul class='nav nav-tabs' id='myTab' role='tablist'>
     <li class='nav-item' role='presentation'>
       <button
@@ -31,12 +31,14 @@
     <div
       class='tab-pane fade show active'
       id='home-tab-pane'
+      
       role='tabpanel'
       aria-labelledby='home-tab'
       tabindex='0'
       style='padding-top: 1%;'
     >{{content}}</br>
-      <button type='button' class='btn btn-outline-danger' style="margin-top: 2%;">Delete Post</button></div>
+      <button type='button' class ='deletePost-btn btn btn-outline-danger' data-id="{{id}}" style="margin-top: 2%;">Delete Post</button>
+      </div>
     <div
       class='tab-pane fade'
       id='profile-tab-pane'
@@ -45,9 +47,16 @@
       tabindex='0'
       style='padding:1%;'
     >
-      <p>No Comments Yet.</p>
+      {{#if comments.length}}
+        {{#each comments}}
+          <p>{{this.content}}</p>
+        {{/each}}
+      {{else}}
+        <p>No Comments Yet.</p>
+      {{/if}}
 
     </div>
 
   </div>
+ 
 </div>

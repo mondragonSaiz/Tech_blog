@@ -9,7 +9,7 @@
       integrity='sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM'
       crossorigin='anonymous'
     />
-    <link rel='stylesheet' href='../css/style.css' />
+    <link rel='stylesheet' href='/css/style.css' />
     <title>Document</title>
   </head>
   <body>
@@ -40,7 +40,11 @@
                   href='/api/user'
                 >Home</a>
                 <a class='nav-link' href='/api/user/dashboard'>Dashboard</a>
-                <a class='nav-link' id='logout-btn'>Logout</a>
+                <a
+                  class='nav-link'
+                  id='logout-btn'
+                  style='cursor: pointer;'
+                >Logout</a>
               {{else}}
                 <a class='nav-link' aria-current='page' href='/'>Home</a>
                 <a
@@ -53,6 +57,7 @@
                   class='nav-link'
                   data-bs-toggle='modal'
                   data-bs-target='#signUpModal'
+                  style='cursor: pointer;'
                 >Sign Up</a>
               {{/if}}
             </div>
@@ -75,6 +80,6 @@
       integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz'
       crossorigin='anonymous'
     ></script>
-    <script src='../js/logout.js'></script>
+    <script src='/js/logout.js'></script>
   </body>
 </html>
