@@ -1,17 +1,20 @@
 [
   {
+    "title": "The alternative coders",
     "content": "All programmers love indie rock",
-    "date": "30/5/1998",
+    "dateOfCreation": "30/5/1998",
     "user_id": 1
   },
   {
+    "title": "Loving the front-end <3",
     "content": "I love HTML",
-    "date": "28/7/1999",
+    "dateOfCreation": "28/7/1999",
     "user_id": 2
   },
   {
+    "title": "#ProgrammersForLife",
     "content": "Debugging is so tiring",
-    "date": "17/03/2000",
+    "dateOfCreation": "17/03/2000",
     "user_id": 3
   }
 ]

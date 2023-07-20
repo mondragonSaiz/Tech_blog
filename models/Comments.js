@@ -16,7 +16,7 @@ Comments.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
+    dateOfCreation: {
       type: DataTypes.STRING,
       allowNull: false,
     },
