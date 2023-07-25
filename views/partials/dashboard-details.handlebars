@@ -69,7 +69,7 @@
         class='nav-link active'
         id='home-tab'
         data-bs-toggle='tab'
-        data-bs-target='#home-tab-pane'
+       data-bs-target='#{{id}}-home-tab-pane'
         type='button'
         role='tab'
         aria-controls='home-tab-pane'
@@ -82,7 +82,7 @@
         class='nav-link'
         id='profile-tab'
         data-bs-toggle='tab'
-        data-bs-target='#profile-tab-pane'
+        data-bs-target='#{{id}}-profile-tab-pane'
         type='button'
         role='tab'
         aria-controls='profile-tab-pane'
@@ -94,7 +94,7 @@
   <div class='tab-content' id='myTabContent'>
     <div
       class='container tab-pane fade show active'
-      id='home-tab-pane'
+      id='{{id}}-home-tab-pane'
       role='tabpanel'
       aria-labelledby='home-tab'
       tabindex='0'
@@ -110,7 +110,7 @@
       </div>
     <div
       class='tab-pane fade'
-      id='profile-tab-pane'
+      id='{{id}}-profile-tab-pane'
       role='tabpanel'
       aria-labelledby='profile-tab'
       tabindex='0'
