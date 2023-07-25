@@ -97,7 +97,8 @@
       style='padding-top: 1%;'
     >
     <p style="padding-right: 80%; font-weight:700;">{{title}}</p>
-    {{content}}
+    
+    <p>{{content}}</p>
     </br>
       <small style="padding-left: 80%; font-size:x-small;">{{dateOfCreation}}</small>
     </div>
@@ -112,7 +113,11 @@
 
       {{#if comments.length}}
         {{#each comments}}
-          <p>{{this.content}}</p>
+        <div class="container" style="padding: 1% 0 2% 0; "><p>{{content}}</p>
+          
+         <p style="padding-left:50%;color:rgba(0, 0, 0, 0.548);">- {{user.username}}</p>
+        </div>
+        
         {{/each}}
       {{else}}
         <p>No Comments Yet</p>

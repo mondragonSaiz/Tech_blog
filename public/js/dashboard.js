@@ -74,9 +74,26 @@ deletePostBTN.forEach((element) => {
   element.addEventListener('click', delButtonHandler);
 });
 
+const updatePostBTN = document.querySelectorAll('.updatePost-btn');
+
 const updatePostHandler = async (event) => {
   event.preventDefault();
   console.log(' 1.- updating...');
+
+  const titleInput = document.querySelector('#updatePostTitleInput');
+  const contentInput = document.querySelector('#updatePostContentInput');
+  if (
+    titleInput.classList.contains('is-invalid') &&
+    contentInput.classList.contains('is-invalid')
+  ) {
+    titleInput.classList.remove('is-invalid');
+    contentInput.classList.remove('is-invalid');
+  } else if (titleInput.classList.contains('is-invalid')) {
+    titleInput.classList.remove('is-invalid');
+  } else if (contentInput.classList.contains('is-invalid')) {
+    contentInput.classList.remove('is-invalid');
+  }
+
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -92,22 +109,42 @@ const updatePostHandler = async (event) => {
         .value.trim();
       console.log('update post title : ', title);
       console.log('update post content : ', content);
-      const response = await fetch(`/api/user/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({ title, content }),
-        headers: { 'Content-Type': 'application/json' },
-      });
 
-      if (response.ok) {
-        document.location.reload();
-      } else {
-        alert('Failed to update post');
+      if (title && content) {
+        const response = await fetch(`/api/user/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ title, content }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+          document.location.reload();
+        } else {
+          alert('Failed to update post');
+        }
+      } else if (
+        (title === '' && content === '') ||
+        (title === null && content === null)
+      ) {
+        document
+          .querySelector('#updatePostTitleInput')
+          .classList.add('is-invalid');
+        document
+          .querySelector('#updatePostContentInput')
+          .classList.add('is-invalid');
+      } else if (title === '' || title === null) {
+        document
+          .querySelector('#updatePostTitleInput')
+          .classList.add('is-invalid');
+      } else if (content === '' || content === null) {
+        document
+          .querySelector('#updatePostContentInput')
+          .classList.add('is-invalid');
       }
     });
   }
 };
 
-const updatePostBTN = document.querySelectorAll('.updatePost-btn');
 updatePostBTN.forEach((element) => {
   element.addEventListener('click', updatePostHandler);
 });

@@ -14,6 +14,12 @@ router.get('/', withAuth, async (req, res) => {
         {
           model: Comments,
           attributes: ['content', 'dateOfCreation'],
+          include: [
+            {
+              model: Users, // Include the Users model again for the referenced user
+              attributes: ['username'], // Include only the 'username' attribute
+            },
+          ],
         },
       ],
     });
@@ -61,20 +67,25 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: { user_id: req.session.user_id },
       include: [
         {
+          model: Users,
+          attributes: ['username', 'email', 'id'],
+        },
+        {
           model: Comments,
           attributes: ['content', 'dateOfCreation'],
+          include: [
+            {
+              model: Users, // Include the Users model again for the referenced user
+              attributes: ['username'], // Include only the 'username' attribute
+            },
+          ],
         },
       ],
     });
-    // // let bully = true;
-    // // if (!postDataDB) {
-    // //   bully = false;
 
-    // //   res.render('dashboard', { bully });
-    // // }
     const posts = postDataDB.map((post) => post.get({ plain: true }));
     res.render('dashboard', { posts, logged_in: req.session.logged_in });
-    // console.log(postDataDB);
+
     console.log('SEQUALIZED', postDataDB);
   } catch (err) {
     res.status(500).json(err);
@@ -101,7 +112,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.post('/addComment', async (req, res) => {
+router.post('/addComment', withAuth, async (req, res) => {
   try {
     const now = dayjs().format('MM-DD-YYYY');
     console.log('NOW', now);
@@ -120,7 +131,7 @@ router.post('/addComment', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   const id = req.params.id;
   const { title, content } = req.body;
   console.log('update post body', req.body);
