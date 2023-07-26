@@ -6,7 +6,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-  console.log('SIGNUP BODY', req.body);
   try {
     const newUserDB = await Users.create({
       username: req.body.username,
@@ -20,7 +19,6 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = newUserDB.id;
 
       res.status(200).json(newUserDB);
-      console.log('response sent');
     });
   } catch (err) {
     res.status(500).json(err);
@@ -29,8 +27,6 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    console.log(req.body);
-
     const existingUserDB = await Users.findOne({
       where: { email: req.body.email },
     });
@@ -44,7 +40,6 @@ router.post('/login', async (req, res) => {
     const validPassword = existingUserDB.checkPassword(req.body.password);
 
     if (!validPassword) {
-      console.log('error pw');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -57,7 +52,6 @@ router.post('/login', async (req, res) => {
       res
         .status(200)
         .json({ user: existingUserDB, message: 'You are now logged in' });
-      console.log('response sent');
     });
   } catch (err) {
     res.status(500).json(err);
@@ -65,7 +59,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log('---------- LOGOUT POST REQ RECEIVED');
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
