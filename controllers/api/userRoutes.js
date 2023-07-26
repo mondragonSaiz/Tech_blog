@@ -40,8 +40,6 @@ router.post('/addPost', withAuth, async (req, res) => {
   try {
     const now = dayjs().format('MM/DD/YYYY');
 
-    const date = '30/08/98';
-
     const titulo = 'titulo 1';
     const newPostDB = await Posts.create({
       title: req.body.title,

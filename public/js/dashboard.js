@@ -22,11 +22,10 @@ const addPostBTN = document.querySelector('#addPostSubmit');
 
 addPostBTN.addEventListener('click', async (e) => {
   e.preventDefault();
-  console.log('ADD POST TRIGERRED');
+
   const title = document.querySelector('#postTitleInput').value.trim();
   const content = document.querySelector('#postContentInput').value.trim();
   if (title && content) {
-    console.log('POST CONTENT', content);
     const response = await fetch('/api/user/addPost', {
       method: 'POST',
       body: JSON.stringify({ title, content }),
@@ -54,7 +53,6 @@ addPostBTN.addEventListener('click', async (e) => {
 const deletePostBTN = document.querySelectorAll('.deletePost-btn');
 
 const delButtonHandler = async (event) => {
-  console.log('delete');
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -78,7 +76,6 @@ const updatePostBTN = document.querySelectorAll('.updatePost-btn');
 
 const updatePostHandler = async (event) => {
   event.preventDefault();
-  console.log(' 1.- updating...');
 
   const titleInput = document.querySelector('#updatePostTitleInput');
   const contentInput = document.querySelector('#updatePostContentInput');
@@ -100,15 +97,13 @@ const updatePostHandler = async (event) => {
     const updatePostSubmitBTN = document.querySelector('#updatePostSubmit');
     updatePostSubmitBTN.addEventListener('click', async (event) => {
       event.preventDefault();
-      console.log(' 2.- updating...');
+
       const title = document
         .querySelector('#updatePostTitleInput')
         .value.trim();
       const content = document
         .querySelector('#updatePostContentInput')
         .value.trim();
-      console.log('update post title : ', title);
-      console.log('update post content : ', content);
 
       if (title && content) {
         const response = await fetch(`/api/user/${id}`, {
