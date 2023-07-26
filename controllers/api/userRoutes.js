@@ -25,9 +25,7 @@ router.get('/', withAuth, async (req, res) => {
     });
     const posts = postDataDB.map((post) => post.get({ plain: true }));
     const userID = req.session.user_id;
-    console.log('USER ID', userID);
 
-    console.log('POST', posts);
     res.render('userhomepage', {
       posts,
       logged_in: req.session.logged_in,
@@ -41,10 +39,9 @@ router.get('/', withAuth, async (req, res) => {
 router.post('/addPost', withAuth, async (req, res) => {
   try {
     const now = dayjs().format('MM/DD/YYYY');
-    console.log('NOW', now);
+
     const date = '30/08/98';
-    console.log('IN ADDPOST ENDPOINT');
-    console.log(req.body);
+
     const titulo = 'titulo 1';
     const newPostDB = await Posts.create({
       title: req.body.title,
@@ -61,8 +58,6 @@ router.post('/addPost', withAuth, async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    console.log('dashboard routes');
-    console.log(req.session.user_id);
     const postDataDB = await Posts.findAll({
       where: { user_id: req.session.user_id },
       include: [
@@ -85,8 +80,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const posts = postDataDB.map((post) => post.get({ plain: true }));
     res.render('dashboard', { posts, logged_in: req.session.logged_in });
-
-    console.log('SEQUALIZED', postDataDB);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -115,9 +108,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 router.post('/addComment', withAuth, async (req, res) => {
   try {
     const now = dayjs().format('MM-DD-YYYY');
-    console.log('NOW', now);
-    const datee = '23/96/1999';
-    console.log('ADD COMMENT BODY', req.body);
+
     const commentDataDB = await Comments.create({
       content: req.body.content,
       dateOfCreation: now,
@@ -134,7 +125,7 @@ router.post('/addComment', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
   const id = req.params.id;
   const { title, content } = req.body;
-  console.log('update post body', req.body);
+
   try {
     const post = await Posts.findByPk(id);
 
@@ -150,7 +141,6 @@ router.put('/:id', withAuth, async (req, res) => {
 
     return res.status(200).json({ message: 'Post updated successfully' });
   } catch (error) {
-    console.error('Error updating post:', error);
     return res.status(500).json({ message: 'Internal server error' });
   }
 });
